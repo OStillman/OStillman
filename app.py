@@ -7,7 +7,9 @@ app = Flask(__name__)
 def index():
     Records = db.Records()
     timeline_entries = Records.all_records['Entries']['Data']
-    return render_template('index.html', timeline_entries=timeline_entries)
+
+    Bio = db.Bio()
+    return render_template('index.html', timeline_entries=timeline_entries, blurb=Bio.bio)
 
 
 if __name__ == '__main__':

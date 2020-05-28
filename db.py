@@ -18,7 +18,7 @@ class Records():
 
     def query(self):
         #print (today, file=sys.stderr)
-        self.cursor.execute(''' SELECT * FROM entry''')
+        self.cursor.execute(''' SELECT * FROM entry ORDER BY year DESC''')
         self.all_records = self.cursor.fetchall()
 
     def sortEntries(self):
@@ -26,3 +26,27 @@ class Records():
         for entry in self.all_records:
             all_entries["Entries"]["Data"].append({"title": entry[1], "desc": entry[2], "year": entry[3], "type": entry[4]})
         self.all_records = all_entries
+
+
+class Bio():
+    def __init__(self, bio=None):
+        self.db = sqlite3.connect('DB/ostillman.db')
+        self.cursor = self.db.cursor()
+        self.query()
+        self.sortBio()
+        self.db.close()
+
+
+    @property
+    def bio(self):
+        return self._bio
+
+    @bio.setter
+    def bio(self, bio):
+        self._bio = bio
+
+    def query(self):
+        self.bio = self.cursor.execute('''SELECT body FROM data WHERE name = "Bio"''').fetchone()[0]
+
+    def sortBio(self):
+        self.bio

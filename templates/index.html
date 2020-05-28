@@ -17,9 +17,9 @@
     <div class="timeline">
         {% for entry in timeline_entries %}
             {% if loop.index % 2 != 0 %}
-            <div class="container left record">
+            <div class="container left record {{'work' if entry.type == 'W'}}{{'hobby' if entry.type == 'H' }}">
             {% else %}
-            <div class="container right record">
+            <div class="container right record {{'work' if entry.type == 'W'}}{{'hobby' if entry.type == 'H' }}">
                 {% endif %}
                 <div class="content">
                     <h2>{{ entry.title }} <span class="date">{{ entry.year }}</span></h2>
