@@ -9,7 +9,8 @@ def index():
     timeline_entries = Records.all_records['Entries']['Data']
 
     Bio = db.Bio()
-    return render_template('index.html', timeline_entries=timeline_entries, blurb=Bio.bio)
+    Name = db.Name()
+    return render_template('index.html', timeline_entries=timeline_entries, blurb=Bio.bio, name=Name.name)
 
 
 if __name__ == '__main__':

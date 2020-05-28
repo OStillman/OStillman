@@ -46,7 +46,30 @@ class Bio():
         self._bio = bio
 
     def query(self):
-        self.bio = self.cursor.execute('''SELECT body FROM data WHERE name = "Bio"''').fetchone()[0]
+        self.bio = self.cursor.execute('''SELECT body FROM data WHERE name = ?''', ("Bio",)).fetchone()[0]
 
     def sortBio(self):
         self.bio
+
+class Name():
+    def __init__(self, name=None):
+        self.db = sqlite3.connect('DB/ostillman.db')
+        self.cursor = self.db.cursor()
+        self.query()
+        self.sortName()
+        self.db.close()
+
+
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, name):
+        self._name = name
+
+    def query(self):
+        self.name = self.cursor.execute('''SELECT Body FROM data WHERE name = ?''', ("Name",)).fetchone()[0]
+
+    def sortName(self):
+        self.name

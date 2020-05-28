@@ -85,26 +85,27 @@ class DatabaseEntries(unittest.TestCase):
 
     def test_bio_fetch(self):
         """Correct Bio Fetch?"""
-        fetched_bio = self.cursor.execute('''SELECT body FROM data WHERE name = "Bio"''').fetchone()[0]
+        fetched_bio = self.cursor.execute('''SELECT Body FROM data WHERE name = ?''', ("Bio",)).fetchone()[0]
         Bio = db.Bio()
         assert fetched_bio in Bio.bio
 
     def test_bio_output(self):
         """Bio Output?"""
         data = self.rv.data.decode("utf-8")
-        bio = self.cursor.execute('''SELECT body FROM data WHERE name = "Bio"''').fetchone()
+        bio = self.cursor.execute('''SELECT Body FROM data WHERE name = ?''', ("Bio",)).fetchone()[0]
         assert bio in data
 
     def test_name_fetch(self):
-        """Correct Bio Fetch?"""
-        fetched_name = self.cursor.execute('''SELECT body FROM data WHERE name = "Name"''').fetchone()[0]
+        """Correct Name Fetch?"""
+        fetched_name = self.cursor.execute('''SELECT Body FROM data WHERE name = ?''', ("Name",)).fetchone()[0]
         Name = db.Name()
+        print(Name.name)
         assert fetched_name in Name.name
 
     def test_name_output(self):
         """Name Output?"""
         data = self.rv.data.decode("utf-8")
-        bio = self.cursor.execute('''SELECT body FROM data WHERE name = "Name"''').fetchone()[0]
+        bio = self.cursor.execute('''SELECT Body FROM data WHERE name = ?''', ("Name",)).fetchone()[0]
         assert bio in data        
         
 
