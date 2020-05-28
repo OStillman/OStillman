@@ -13,6 +13,10 @@ class BasicTestCase(unittest.TestCase):
         self.response = self.tester.get('/', content_type='html/text')
         self.assertEqual(self.response.status_code, 200)
 
+    def test_database_reachable(self):
+        tester = path.exists("DB/ostillman.db")
+        self.assertEqual(tester, True)
+
 class FunctionalityTestCase(unittest.TestCase):
 
     def setUp(self):
