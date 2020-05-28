@@ -49,18 +49,29 @@ class DatabaseContentFetched(unittest.TestCase):
         self.db = sqlite3.connect('DB/ostillman.db')
         self.cursor = self.db.cursor()
         self.entries_count = self.cursor.execute('''select COUNT(id) from entry''').fetchone()[0]
+        self.entry_singular = self.cursor.execute('''select * from entry''').fetchone()
 
     def test_records_exists(self):
+        """Records Class Reachable?"""
         assert hasattr(db, 'Records')
 
     def test_all_records_fetchable(self):
+        """Records output from db.Records match length"""
         self.Records = db.Records()
         assert len(self.Records.all_records["Entries"]["Data"]) == self.entries_count
 
 
     def test_all_records_output(self):
+        """Records carried over to HTML"""
         rv = self.app.get('/')
         assert len(re.findall("record", rv.data.decode("utf-8"))) == self.entries_count
+
+    def test_record_correctly_rendered(self):
+        """Record info output to HTML"""
+        data = self.app.get('/').data.decode("utf-8")
+        assert self.entry_singular[1] in data
+        assert self.entry_singular[2] in data
+        assert self.entry_singular[3] in data
 
 
     def tearDown(self):
@@ -69,4 +80,4 @@ class DatabaseContentFetched(unittest.TestCase):
         
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=1)
