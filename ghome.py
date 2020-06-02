@@ -14,5 +14,5 @@ class HandleRequest():
         self._response = response
 
     def simpleResponse(self):
-        response = requests.get('http://localhost:3000/ghome')
+        response = requests.get('http://localhost:83/ghome')
         self.response = response.text
