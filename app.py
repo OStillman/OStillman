@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import db
+import ghome as assistant
 
 app = Flask(__name__)
 
@@ -17,7 +18,8 @@ def ghome():
     if request.method == 'GET':
         return 'ok'
     else:
-        return "", 200, {'ContentType':'application/json'} 
+        HandleRequest = assistant.HandleRequest()
+        return HandleRequest.response, 200, {'ContentType':'application/json'} 
 
 
 if __name__ == '__main__':
