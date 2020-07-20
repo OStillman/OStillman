@@ -9,9 +9,12 @@ def index():
     Records = db.Records()
     timeline_entries = Records.all_records['Entries']['Data']
 
+    Skills = db.Skills()
+    all_skills = Skills.skills
+
     Bio = db.Bio()
     Name = db.Name()
-    return render_template('index.html', timeline_entries=timeline_entries, blurb=Bio.bio, name=Name.name)
+    return render_template('index.html', timeline_entries=timeline_entries, blurb=Bio.bio, name=Name.name, skills=all_skills)
 
 @app.route('/ghome', methods=['GET', 'POST'])
 def ghome():

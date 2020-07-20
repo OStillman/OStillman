@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title> Owen Stillman </title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
 <header>
     <h1>{{ name }}</h1>
     <p>{{ blurb }}</p>
+    <div class="skills">
+        {% for skill in skills %}
+        <span class="{{skill[1]}}">{{skill[0]}}</span>
+        {% endfor %}
+    </div>
 </header>
 <section id="timeline">
     <div class="timeline">
