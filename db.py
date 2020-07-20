@@ -73,3 +73,31 @@ class Name():
 
     def sortName(self):
         self.name
+
+
+class Skills():
+    def __init__(self, skills=None):
+        self.db = sqlite3.connect('DB/ostillman.db')
+        self.cursor = self.db.cursor()
+        self.query()
+        self.sortSkills()
+        self.db.close()
+
+
+    @property
+    def skills(self):
+        return self._skills
+
+    @skills.setter
+    def skills(self, skills):
+        self._skills = skills
+
+    def query(self):
+        self.skills = self.cursor.execute('''SELECT * FROM skills ORDER BY type;''').fetchall()
+
+    def sortSkills(self):
+        end_data = []
+        for skill in self.skills:
+            end_data.append(skill)
+        print(end_data)
+        self.skills = end_data
