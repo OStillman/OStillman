@@ -40,7 +40,8 @@ header div{
 header div span{
     background-color: #49a1ad;
     border-radius: 5px;
-    padding: 5px 5px 5px 5px;
+    padding: 5px 5px;
+    margin: 5px 0px;
     display: inline-block;
     color: black;
 }
