@@ -1,15 +1,18 @@
 # OStillman
 
-Redevelopment of my Website (long overdue...)
+Redevelopment of my landing page website.
 
-Aim is to have a fully functioning website running on my Rapsberry Pi4. 
+After the success of building the Thornbur Round Table Website, and the Santa Sleigh Tracker, it's time to focus a bit on my own Landing Page!
 
-Will be also following TDD princicples as much as possible throughout development
+## About
 
-## How have I found TDD?
+This is a simple one-page landing page for ostillman.co.uk, showcasing Owen Stillman as a software developer.
 
-The method I've used is poor, beyond testing code and simple HTML validation it starts to come up short. 
+## Files
 
-However, TDD has been useful for me to develop with confidence, and I think the resultant Python is tidier than if I was to attempt it all in one go, as I usually do. 
+- `index.html`: The main HTML page
+- `style.css`: Basic CSS styling
 
-All in all, a good introduction to TDD that I'll be sure to carry on using in future projects!
+## Usage
+
+Open `index.html` in a web browser to view the site.
